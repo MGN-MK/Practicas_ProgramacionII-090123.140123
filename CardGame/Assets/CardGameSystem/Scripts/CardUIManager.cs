@@ -15,4 +15,13 @@ public class CardUIManager : MonoBehaviour
             GameObject newCard = Instantiate(cardPrefab, cardParent);
         }
     }
+    public void PlayCard(Card card)
+    {
+        //Llamar al método del GameManager que maneja la lógica de la carta
+        GameManager.instance.PlayCard(card);
+        //Lógica para ganar experiencia
+        XPManager.instance.EarnXP(card.value);
+        // Actualizar interfaz de usuario
+        DisplayCards();
+    }
 }
